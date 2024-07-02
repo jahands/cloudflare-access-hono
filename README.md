@@ -1,4 +1,4 @@
-# cloudflare-access-hono
+# hono-cloudflare-access
 
 Hono middleware for validating Cloudflare Access JWTs
 
