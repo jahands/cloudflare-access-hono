@@ -184,19 +184,19 @@ const AccessCertsResponse = z.object({
   public_certs: z.array(PublicCERT),
 });
 
-type AccessPayload = z.infer<typeof AccessPayload>;
+type AccessPayload = z.infer<typeof AccessPayload>
 const AccessPayload = z.object({
-  aud: z.array(z.string().length(64)),
-  email: z.string().min(1),
-  exp: z.number(),
-  iat: z.number(),
-  nbf: z
+	aud: z.array(z.string().length(64)),
+	email: z.string().min(1),
+	exp: z.number().min(1),
+	iat: z.number().min(1),
+	nbf: z
     .number()
     .optional()
-    .describe("nbf is not present on service auth keys"),
-  iss: z.string().min(1),
-  type: z.string().min(1),
-  identity_nonce: z.string().min(1),
-  sub: z.string().min(1),
-  country: z.string().length(2),
-});
+    .describe('nbf is not present on service auth keys'),
+	iss: z.string().min(1),
+	type: z.string().min(1),
+	identity_nonce: z.string().min(1),
+	sub: z.string().uuid().describe('uuid of the user in Cloudflare Access'),
+	country: z.string().length(2),
+})
